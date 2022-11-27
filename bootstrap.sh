@@ -10,6 +10,8 @@ for script in ~/.dotfiles/scripts/*; do
   bash "$script"
 done
 
+source ~/.bash_profile
+
 cd $CURRENT
 
 rm -rf $TMPDIR
