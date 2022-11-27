@@ -1,7 +1,10 @@
 #!/bin/bash
 
 ## Install k9s
-brew install derailed/k9s/k9s
+curl -sS https://webinstall.dev/k9s | bash
+
+## Install helm
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
 ## Install wrk
 brew install wrk
@@ -9,5 +12,3 @@ brew install wrk
 ## Install httpie
 brew install httpie
 
-## Install helm
-brew install helm
