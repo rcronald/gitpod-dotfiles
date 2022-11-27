@@ -1,23 +1,15 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
+TMPDIR=$(mktemp -d)
 
-## Install kubectl
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-rm -rf kubectl
-cat ${HOME}/.kube/config
+CURRENT=$PWD
 
-## Install Azure
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+cd $TMPDIR
 
-## Install k9s
-brew install derailed/k9s/k9s
+for script in ~/.dotfiles/scripts/*; do
+  bash "$script"
+done
 
-## Install wrk
-brew install wrk
+cd $CURRENT
 
-## Install httpie
-brew install httpie
-
-## Install helm
-brew install helm
+rm -rf $TMPDIR
